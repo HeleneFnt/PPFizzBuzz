@@ -2,6 +2,8 @@ import subprocess
 import requests
 username = 'LnWatta'
 token = 'c540db49e48e202108c4c7fd6c7a6ab2f6f9eca0'
+console_id = 34018577
+url= "LnWatta.pythonanywhere.com"
 
 response = requests.get(
     'https://www.pythonanywhere.com/api/v0/user/{username}/cpu/'.format(
@@ -24,7 +26,27 @@ def pushongit():
     subprocess.run(["git", "commit", "-m", "test ok"])
     subprocess.run(["git", "push", "origin", "main"])
 
-#def pullOnServer():
+def pullOnServer():
+    response = requests.post(
+        'https://www.pythonanywhere.com/api/v0/user/{username}/consoles/{console_id}/send_input/'.format(
+            username=username,
+            console_id=console_id
+        ),
+        headers={'Authorization': 'Token {token}'.format(token=token),
+                 'Content-Type': 'application/json'},
+        json={'input': 'cd ~/mysite && git pull'}
+    )
+
+def reloadServer():
+    response = requests.post(
+        'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{url}/reload/'.format(
+            username=username,
+            url=url
+        ),
+        headers={'Authorization': 'Token {token}'.format(token=token)}
+    )
+
+
 
 
 
@@ -33,3 +55,6 @@ if result.returncode:
 else:
     print("test OK")
     pushongit()
+    pullOnServer()
+    reloadServer()
+
