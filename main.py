@@ -11,5 +11,5 @@ def todo_list():
 
 
 
-application = default_app()# Démarrage du serveur
-#run(host='localhost', port=8080, debug=True, reloader=True)
+application = default_app()# Démarrage du serveur distant
+#run(host='localhost', port=8080, debug=True, reloader=True) #démarrage du serveur local
