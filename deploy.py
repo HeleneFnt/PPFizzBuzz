@@ -34,7 +34,7 @@ def pullOnServer():
         ),
         headers={'Authorization': 'Token {token}'.format(token=token),
                  'Content-Type': 'application/json'},
-        json={'input': 'cd ~/mysite && git pull'}
+        json={'input': 'cd ~/mysite && git pull\n'}
     )
 
 def reloadServer():
