@@ -24,6 +24,9 @@ def pushongit():
     subprocess.run(["git", "commit", "-m", "test ok"])
     subprocess.run(["git", "push", "origin", "main"])
 
+#def pullOnServer():
+
+
 
 if result.returncode:
     print("test non passé")
